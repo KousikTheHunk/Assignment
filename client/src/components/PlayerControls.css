@@ -1,0 +1,59 @@
+.controls {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 0 0 4px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+  z-index: 15; opacity: 0; transition: opacity 0.2s ease;
+}
+.vp-container:hover .controls, .controls.visible { opacity: 1; }
+
+.progress-area { padding: 8px 12px 4px; }
+
+.progress-track {
+  position: relative; height: 4px; border-radius: 2px; cursor: pointer; transition: height 0.15s ease;
+}
+.progress-track:hover { height: 6px; }
+
+.progress-bg { position: absolute; inset: 0; background: rgba(255,255,255,0.2); border-radius: inherit; }
+.progress-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); border-radius: inherit; transition: width 0.1s linear; }
+
+.progress-thumb {
+  position: absolute; top: 50%; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.15s ease; box-shadow: 0 0 8px rgba(232,255,71,0.6);
+}
+.progress-track:hover .progress-thumb { transform: translate(-50%, -50%) scale(1); }
+
+.ad-marker {
+  position: absolute; top: 50%; width: 4px; height: 10px;
+  background: #ffcc00; transform: translate(-50%, -50%); border-radius: 2px; z-index: 2; transition: all 0.3s;
+}
+.ad-marker.done { background: rgba(255,204,0,0.35); }
+
+.hover-tooltip {
+  position: absolute; bottom: 14px; transform: translateX(-50%);
+  background: rgba(0,0,0,0.8); color: #fff; font-family: var(--font-mono); font-size: 10px;
+  padding: 3px 6px; border-radius: 4px; pointer-events: none; white-space: nowrap;
+}
+
+.controls-row {
+  display: flex; align-items: center; justify-content: space-between; padding: 4px 8px 8px;
+}
+.controls-left, .controls-right { display: flex; align-items: center; gap: 4px; }
+
+.ctrl-btn {
+  width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+  background: transparent; color: rgba(255,255,255,0.85); border-radius: 6px; transition: all 0.15s; flex-shrink: 0;
+}
+.ctrl-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.ctrl-btn svg { width: 18px; height: 18px; }
+.play-btn svg { width: 20px; height: 20px; }
+
+.volume-group { display: flex; align-items: center; gap: 2px; }
+.volume-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 72px; height: 3px; background: rgba(255,255,255,0.25); border-radius: 2px; outline: none; cursor: pointer;
+}
+.volume-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: #fff; cursor: pointer; }
+
+.time-display { display: flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 12px; padding: 0 4px; color: rgba(255,255,255,0.7); }
+.time-current { color: #fff; }
+.time-sep { color: rgba(255,255,255,0.35); }

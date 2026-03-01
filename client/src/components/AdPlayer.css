@@ -1,0 +1,65 @@
+.ad-player {
+  position: absolute; inset: 0; background: #000; z-index: 10;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.ad-player.skipping { opacity: 0; transform: scale(0.98); }
+
+.ad-video { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+.ad-top-bar {
+  position: absolute; top: 0; left: 0; right: 0;
+  display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+}
+
+.ad-label-badge {
+  background: var(--accent); color: #000;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 2px; padding: 3px 7px; border-radius: 3px; flex-shrink: 0;
+}
+.ad-counter { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.6); flex-shrink: 0; }
+.ad-title-text { font-size: 12px; color: rgba(255,255,255,0.75); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.ad-progress-track { position: absolute; bottom: 52px; left: 0; right: 0; height: 3px; background: rgba(255,255,255,0.15); }
+.ad-progress-fill { height: 100%; background: var(--accent); transition: width 0.1s linear; box-shadow: 0 0 6px rgba(232,255,71,0.5); }
+
+.ad-cta-btn {
+  position: absolute; right: 16px; bottom: 70px;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3);
+  color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 500;
+  text-decoration: none; backdrop-filter: blur(8px); transition: all 0.2s;
+  animation: fadeInUp 0.3s ease;
+}
+.ad-cta-btn:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ad-bottom-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: space-between; padding: 10px 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+.ad-advertiser { display: flex; align-items: center; gap: 6px; }
+.ad-by { font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
+.ad-name { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.7); }
+
+.skip-btn {
+  display: flex; align-items: center; gap: 8px; padding: 8px 16px;
+  border-radius: 4px; font-size: 12px; font-weight: 500; transition: all 0.2s;
+  font-family: var(--font-body);
+}
+.skip-btn.enabled {
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4);
+  color: #fff; cursor: pointer; animation: fadeIn 0.3s ease;
+}
+.skip-btn.enabled:hover { background: rgba(255,255,255,0.25); border-color: #fff; }
+.skip-btn.enabled svg { width: 14px; height: 14px; }
+.skip-btn.disabled {
+  background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.5); cursor: not-allowed;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
